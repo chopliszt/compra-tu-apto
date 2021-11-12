@@ -1,4 +1,5 @@
 import React from "react";
+import NarvBarItem from "./NavBarItem/NarvBarItem";
 
 const NavBar = (props) => {
   return (
@@ -9,7 +10,7 @@ const NavBar = (props) => {
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="perspektiva360.com">
-            Navbar{props.navBrandLeft}
+            {props.navBrandLeft}
           </a>
           {/* Seccion del boton de hamburguesa */}
           <button
@@ -28,24 +29,26 @@ const NavBar = (props) => {
           <div className="collapse navbar-collapse" id="navbarNav">
             {/* Aqui comienza el unordered list que hace el menu */}
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Features
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled">Disabled</a>
-              </li>
+              <NarvBarItem
+                texto="Opción1"
+                aClase="nav-link active"
+                aHref="https://perspektiva360.com/"
+              />
+              <NarvBarItem
+                texto="Opción2"
+                aClase="nav-link"
+                aHref="https://perspektiva360.com/?lang=en"
+              />
+              <NarvBarItem
+                texto="Pricing"
+                aClase="nav-link"
+                aHref="https://perspektiva360.com/?lang=en"
+              />
+              <NarvBarItem
+                texto="Deshabilitado"
+                aClase="nav-link disabled"
+                aHref="https://perspektiva360.com/?lang=en"
+              />
             </ul>
           </div>
         </div>
