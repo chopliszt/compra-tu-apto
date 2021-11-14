@@ -1,5 +1,6 @@
 import React from "react";
 import NarvBarItem from "./NavBarItem/NarvBarItem";
+import CartWidget from "../CartWidget/CartWidget";
 
 const NavBar = (props) => {
   return (
@@ -26,6 +27,7 @@ const NavBar = (props) => {
           </button>
           {/* Fin de la seccion del boton de hamburguesa */}
 
+          {/* Todo lo que hay desde aca se va a colapsar en la hamburguesa */}
           <div className="collapse navbar-collapse" id="navbarNav">
             {/* Aqui comienza el unordered list que hace el menu */}
             <ul className="navbar-nav">
@@ -49,6 +51,10 @@ const NavBar = (props) => {
                 aClase="nav-link disabled"
                 aHref="https://perspektiva360.com/?lang=en"
               />
+            </ul>
+            {/* este UL  se alinea derecha por clase ms-auto*/}
+            <ul class="navbar-nav ms-auto">
+              <CartWidget />
             </ul>
           </div>
         </div>
