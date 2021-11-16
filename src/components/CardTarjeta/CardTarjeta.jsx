@@ -3,11 +3,7 @@ import { Card, Icon, Image } from "semantic-ui-react";
 
 const CardTarjeta = (props) => (
   <Card>
-    <Image
-      src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
-      wrapped
-      ui={false}
-    />
+    <Image src="/juan camilo1.jpg" wrapped ui={false} />
     <Card.Content>
       <Card.Header>{props.name}</Card.Header>
       <Card.Meta>
