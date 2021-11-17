@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function ImgMediaCard() {
+export default function ItemCount() {
   return (
     <div className="container">
       <div className="row mb-5 justify-content-center">
@@ -15,21 +15,37 @@ export default function ImgMediaCard() {
             component="img"
             alt="green iguana"
             height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
+            image="/juan camilo1.jpg"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               Apartamento 1
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Este apto Lizards are a widespread group of squamate reptiles,
-              with over 6,000 species, ranging across all continents except
-              Antarctica
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Accusantium, deserunt! Itaque doloribus perspiciatis provident
+              ducimus!
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Share</Button>
-            <Button size="small">Learn More</Button>
+            <div className="col ">
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  alert("Funciona!");
+                }}
+              >
+                -
+              </button>
+              {/* <Button size="small" variant="outlined">
+              +
+            </Button> */}
+              <div class="ui input">
+                <input type="text" placeholder="Agregar..." />
+              </div>
+              <button className="btn btn-primary">+</button>
+              {/* <Button size="small">-</Button> */}
+            </div>
           </CardActions>
         </Card>
       </div>
