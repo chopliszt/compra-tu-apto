@@ -3,20 +3,26 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Alerta from "../Alerta/Alerta";
 
-export default function ItemCount({ inventario, inicial }) {
-  const [cantidadCompras, setCantidadCompras] = React.useState(inicial);
-  const [hayAlertaDeInventario, setHayAlertaDeInventario] =
-    React.useState(false);
+export default function ItemCount() {
+  const [cantidadCompras, setCantidadCompras] = React.useState(5);
+  const [cantidadAAgregar, setCantidadAAgregar] = React.useState(0);
 
+  function handleInput(event) {
+    const valorAAgregarORestar = event.target.value;
+    setCantidadAAgregar(valorAAgregarORestar);
+  }
+
+  function onAdd(event) {
+    //aqui tengo que decidir si lo que le pase viene de la casilla de agregar o si viene de la casilla restar
+    //Se puede hacer el prevState
+  }
+
+  //onChange, onClick, value
   return (
     <div className="container">
-      <div>
-        {hayAlertaDeInventario && <Alerta mensaje="No hay suficiente Stock" />}
-      </div>
-
       <div className="row mb-5 justify-content-center">
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
@@ -40,34 +46,35 @@ export default function ItemCount({ inventario, inicial }) {
               <button
                 className="btn btn-primary"
                 onClick={() => {
-                  const resta = cantidadCompras - 1;
-                  resta < 0
-                    ? setCantidadCompras(0)
-                    : setCantidadCompras(cantidadCompras - 1);
+                  setCantidadCompras(cantidadCompras - cantidadAAgregar);
                 }}
               >
                 -
               </button>
-
+              {/* <Button size="small" variant="outlined">
+              +
+            </Button> */}
               <div class="ui input">
                 <input
                   type="text"
-                  //   onChange={handleInput}
+                  onChange={handleInput}
                   name="casillaDeItems"
-                  placeholder="Input Desabilitado"
+                  placeholder="Agregar..."
                 />
               </div>
               <button
                 className="btn btn-primary"
                 onClick={() => {
-                  const suma = parseInt(cantidadCompras) + 1;
-                  suma > inventario
-                    ? setHayAlertaDeInventario(true)
-                    : setCantidadCompras(parseInt(cantidadCompras) + 1);
+                  let compras2 = cantidadCompras + cantidadAAgregar;
+
+                  setCantidadCompras(
+                    parseInt(cantidadCompras) + parseInt(cantidadAAgregar)
+                  );
                 }}
               >
                 +
               </button>
+              {/* <Button size="small">-</Button> */}
             </div>
           </CardActions>
         </Card>
@@ -76,3 +83,4 @@ export default function ItemCount({ inventario, inicial }) {
     </div>
   );
 }
+export const pruebaDeExportar = 1;

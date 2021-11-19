@@ -8,7 +8,7 @@ const CartWidget = () => {
     <div>
       {/* <Icon name="in cart" size="big" /> */}
       <IconButton aria-label="cart">
-        <Badge badgeContent={4} color="secondary">
+        <Badge badgeContent={7} color="secondary">
           <ShoppingCartIcon fontSize="medium" />
           {/* <Icon name="in cart" size="big" /> */}
         </Badge>
