@@ -71,6 +71,7 @@ export default function ItemCount({ inventario, inicial }) {
             </div>
           </CardActions>
         </Card>
+        <p>El Stock disponible es: {inventario}</p>
         <p>Total comprado: {cantidadCompras}</p>
       </div>
     </div>

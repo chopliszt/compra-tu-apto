@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import CardTarjeta from "./components/CardTarjeta/CardTarjeta";
