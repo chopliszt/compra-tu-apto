@@ -16,7 +16,6 @@ export default function ItemCount({ inventario, inicial }) {
       <div>
         {hayAlertaDeInventario && <Alerta mensaje="No hay suficiente Stock" />}
       </div>
-
       <div className="row mb-5 justify-content-center">
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
