@@ -28,7 +28,9 @@ const Item = ({ id, title, price, pictureUrl }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <div className="col "></div>
+            <div className="col">
+              <button className="btn btn-outline-warning">Detalle</button>
+            </div>
           </CardActions>
         </Card>
       </div>
