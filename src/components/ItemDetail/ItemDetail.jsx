@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import ItemCount from "../ItemCount/ItemCount";
 
 //aqui debemos mostrardescripci[on],foto y precio
 
 const ItemDetail = () => {
+  let params = useParams();
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    console.log(`https://api.github.com/users/${params.id}`);
+    fetch(`https://api.github.com/users/${params.id}`)
+      .then((response) => response.json())
+      .then((json) => setUser(json));
+    // .then((json) => console.log(user, "UseItemDetail"));
+  }, []);
+
+  console.log(user, "UseItemDetail");
   return (
     <>
       <div class="row mt-3">
         <col-12>
-          <h2>Título de mi producto</h2>
+          <h2>{user ? user.name : "AquívaElNombre"}</h2>
         </col-12>
       </div>
       <div class="row mt-3">
@@ -30,7 +44,11 @@ const ItemDetail = () => {
           <p>
             <strong>Precio: 130 USD</strong>
           </p>
-          <button class="btn btn-primary">Regresar</button>
+          <Link to="/">
+            <button class="btn btn-primary">Regresar</button>
+          </Link>
+          <h4>Cantidad a comprar</h4>
+          <ItemCount inventario={5} inicial={0} />
         </div>
       </div>
     </>

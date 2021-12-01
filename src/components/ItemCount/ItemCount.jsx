@@ -17,8 +17,8 @@ export default function ItemCount({ inventario, inicial }) {
         {hayAlertaDeInventario && <Alerta mensaje="No hay suficiente Stock" />}
       </div>
       <div className="row mb-5 justify-content-center">
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
+        {/* <Card sx={{ maxWidth: 345 }}> */}
+        {/* <CardMedia
             component="img"
             alt="green iguana"
             height="140"
@@ -33,9 +33,9 @@ export default function ItemCount({ inventario, inicial }) {
               Accusantium, deserunt! Itaque doloribus perspiciatis provident
               ducimus!
             </Typography>
-          </CardContent>
-          <CardActions>
-            <div className="col ">
+          </CardContent> */}
+        {/* <CardActions> */}
+        {/* <div className="col ">
               <button
                 className="btn btn-primary"
                 onClick={() => {
@@ -67,9 +67,42 @@ export default function ItemCount({ inventario, inicial }) {
               >
                 +
               </button>
-            </div>
-          </CardActions>
-        </Card>
+            </div> */}
+        {/* </CardActions> */}
+        {/* </Card> */}
+        <div className="col ">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              const resta = cantidadCompras - 1;
+              resta < 0
+                ? setCantidadCompras(0)
+                : setCantidadCompras(cantidadCompras - 1);
+            }}
+          >
+            -
+          </button>
+
+          <div class="ui input">
+            <input
+              type="text"
+              //   onChange={handleInput}
+              name="casillaDeItems"
+              placeholder="Input Desabilitado"
+            />
+          </div>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              const suma = parseInt(cantidadCompras) + 1;
+              suma > inventario
+                ? setHayAlertaDeInventario(true)
+                : setCantidadCompras(parseInt(cantidadCompras) + 1);
+            }}
+          >
+            +
+          </button>
+        </div>
         <p>El Stock disponible es: {inventario}</p>
         <p>Total comprado: {cantidadCompras}</p>
       </div>

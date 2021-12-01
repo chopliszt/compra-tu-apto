@@ -8,6 +8,7 @@ const ItemList = ({ ItemsAEnviar }) => {
         return index < 5 ? (
           <Item
             key={item.id}
+            id={item.id}
             title={item.login}
             price={item.id}
             pictureUrl={item.avatar_url}

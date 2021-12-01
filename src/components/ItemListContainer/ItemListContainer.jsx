@@ -6,7 +6,6 @@ import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = (props) => {
   const [users, setUsers] = useState([]);
-  //const [view, setView] = useState(1); //Opcional para que muestre la vista segun state
 
   useEffect(() => {
     setTimeout(() => {
@@ -14,12 +13,13 @@ const ItemListContainer = (props) => {
       fetch("https://api.github.com/users")
         .then((response) => response.json())
         .then((json) => setUsers(json));
-    }, 3000);
+    }, 1000);
   }, []);
 
   return (
     <div>
       <h1> {props.greeting}</h1>
+      <h1> Hello desde ItemListContainer</h1>
       <div>
         {/* <ItemDetailContainter /> */}
         <ItemList ItemsAEnviar={users} />

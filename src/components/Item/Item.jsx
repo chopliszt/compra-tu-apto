@@ -4,6 +4,8 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+
 //row justify-content-between o center d-inline-flex
 //Este Item va a contener una tarjeta de cada elemento y va a recibir unas props de id, title, price, url
 const Item = ({ id, title, price, pictureUrl }) => {
@@ -29,7 +31,9 @@ const Item = ({ id, title, price, pictureUrl }) => {
           </CardContent>
           <CardActions>
             <div className="col">
-              <button className="btn btn-outline-warning">Detalle</button>
+              <Link to={`/detail/${id}`}>
+                <button className="btn btn-outline-warning">Detalle</button>
+              </Link>
             </div>
           </CardActions>
         </Card>

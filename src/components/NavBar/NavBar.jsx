@@ -1,6 +1,7 @@
 import React from "react";
 import NarvBarItem from "./NavBarItem/NarvBarItem";
 import CartWidget from "../CartWidget/CartWidget";
+import { NavLink, Link } from "react-router-dom";
 
 const NavBar = (props) => {
   return (
@@ -10,9 +11,12 @@ const NavBar = (props) => {
         style={{ backgroundColor: `${props.colorDeNavBar}` }}
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="perspektiva360.com">
+          <Link className="navbar-brand" to="/">
             {props.navBrandLeft}
-          </a>
+          </Link>
+          {/* <a className="navbar-brand" href="perspektiva360.com">
+            {props.navBrandLeft}
+          </a> */}
           {/* Seccion del boton de hamburguesa */}
           <button
             className="navbar-toggler"
@@ -31,26 +35,28 @@ const NavBar = (props) => {
           <div className="collapse navbar-collapse" id="navbarNav">
             {/* Aqui comienza el unordered list que hace el menu */}
             <ul className="navbar-nav">
+              <NavLink to="/">
+                <NarvBarItem
+                  texto="Home"
+                  aClase="nav-link active"
+                  aHref="https://perspektiva360.com/"
+                />
+              </NavLink>
               <NarvBarItem
-                texto="Opción1"
-                aClase="nav-link active"
-                aHref="https://perspektiva360.com/"
-              />
-              <NarvBarItem
-                texto="Opción2"
+                texto="Boton1"
                 aClase="nav-link"
                 aHref="https://perspektiva360.com/?lang=en"
               />
               <NarvBarItem
-                texto="Pricing"
+                texto="Boton2"
                 aClase="nav-link"
                 aHref="https://perspektiva360.com/?lang=en"
               />
-              <NarvBarItem
+              {/* <NarvBarItem
                 texto="Deshabilitado"
                 aClase="nav-link disabled"
                 aHref="https://perspektiva360.com/?lang=en"
-              />
+              /> */}
             </ul>
             {/* este UL  se alinea derecha por clase ms-auto*/}
             <ul class="navbar-nav ms-auto">
