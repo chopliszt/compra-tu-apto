@@ -13,15 +13,26 @@ const ItemListContainer = (props) => {
 
   useEffect(() => {
     setTimeout(() => {
-      fetch("https://fakestoreapi.com/products/")
+      fetch(
+        props.categoria
+          ? `https://fakestoreapi.com/products/category/${props.categoria}`
+          : `https://fakestoreapi.com/products/`
+      )
         .then((response) => response.json())
         .then((json) => setUsers(json));
     }, 0);
   }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     fetch("https://fakestoreapi.com/products/")
+  //       .then((response) => response.json())
+  //       .then((json) => setUsers(json));
+  //   }, 0);
+  // }, []);
 
   return (
     <div>
-      <h1> {props.greeting}</h1>
+      {/* <h1> {props.greeting}</h1> */}
       <h1>
         {hora > 0 && hora < 12
           ? "Buenos dias querido comprador o compradora!"

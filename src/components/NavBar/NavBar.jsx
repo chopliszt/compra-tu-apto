@@ -35,19 +35,23 @@ const NavBar = (props) => {
               <NavLink to="/">
                 <NarvBarItem
                   texto="Home"
-                  aClase="nav-link active"
-                  aHref="https://perspektiva360.com/"
+                  // aClase="nav-link active"
+                  aClase="nav-link"
+                  // aHref="https://perspektiva360.com/"
+                />
+              </NavLink>
+
+              <NavLink to="/joyas">
+                <NarvBarItem
+                  texto="Joyas"
+                  aClase="nav-link"
+                  // aHref="https://perspektiva360.com/?lang=en"
                 />
               </NavLink>
               <NarvBarItem
-                texto="Categoría1-Coming soon!"
-                aClase="nav-link"
-                aHref="https://perspektiva360.com/?lang=en"
-              />
-              <NarvBarItem
                 texto="Categoría2-Coming soon!"
                 aClase="nav-link"
-                aHref="https://perspektiva360.com/?lang=en"
+                // aHref="https://perspektiva360.com/?lang=en"
               />
               {/* <NarvBarItem
                 texto="Deshabilitado"
@@ -56,7 +60,7 @@ const NavBar = (props) => {
               /> */}
             </ul>
             {/* este UL  se alinea derecha por clase ms-auto*/}
-            <ul class="navbar-nav ms-auto">
+            <ul className="navbar-nav ms-auto">
               <CartWidget />
             </ul>
           </div>
