@@ -2,53 +2,50 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 
-//aqui debemos mostrardescripci[on],foto y precio
-
 const ItemDetail = () => {
   let params = useParams();
-  const [user, setUser] = useState();
+  const [product, setProduct] = useState();
 
   useEffect(() => {
-    console.log(`https://api.github.com/users/${params.id}`);
-    fetch(`https://api.github.com/users/${params.id}`)
+    console.log(`https://fakestoreapi.com/products/${params.id}`);
+    fetch(`https://fakestoreapi.com/products/${params.id}`)
       .then((response) => response.json())
-      .then((json) => setUser(json));
-    // .then((json) => console.log(user, "UseItemDetail"));
+      .then((json) => setProduct(json));
   }, []);
 
-  console.log(user, "UseItemDetail");
   return (
     <>
       <div class="row mt-3">
         <col-12>
-          <h2>{user ? user.name : "AquívaElNombre"}</h2>
+          <h2>
+            {product ? product.title : "Título de artículo"}{" "}
+            <span class="badge bg-primary">
+              {product ? product.category : null}
+            </span>
+          </h2>
         </col-12>
       </div>
       <div class="row mt-3">
         <div class="col-xs-12 col-lg-6">
-          <img
-            class="img-fluid"
-            src="https://conexoinmobiliario.com/wp-content/uploads/2017/01/CL19106-HDR.jpg"
-            alt=""
-          />
+          <img class="img-fluid" src={product ? product.image : null} alt="" />
         </div>
         <div class="col-xs-12 col-lg-6">
-          <h4>
-            Descripción <span class="badge bg-warning">Entrega Inmediata</span>
-          </h4>
+          <h4>Descripción</h4>
+          <p>{product ? product.description : "Descripción"}</p>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla
-            perferendis ipsum eveniet quidem quas modi. Odit ea cupiditate rerum
-            ab?
+            <strong>Categoría: {product ? product.category : null}</strong>
           </p>
           <p>
-            <strong>Precio: 130 USD</strong>
+            <strong>
+              Precio: {product ? product.price : "precio"}{" "}
+              <span class="badge bg-warning">Entrega Inmediata</span>
+            </strong>
           </p>
-          <Link to="/">
-            <button class="btn btn-primary">Regresar</button>
-          </Link>
           <h4>Cantidad a comprar</h4>
           <ItemCount inventario={5} inicial={0} />
+          <Link to="/">
+            <button class="btn btn-info">Regresar</button>
+          </Link>
         </div>
       </div>
     </>

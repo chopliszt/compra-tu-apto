@@ -5,13 +5,13 @@ const ItemList = ({ ItemsAEnviar }) => {
   return (
     <>
       {ItemsAEnviar.map((item, index) => {
-        return index < 5 ? (
+        return index < 15 ? (
           <Item
             key={item.id}
             id={item.id}
-            title={item.login}
-            price={item.id}
-            pictureUrl={item.avatar_url}
+            title={item.title}
+            price={item.price}
+            pictureUrl={item.image}
           />
         ) : null;
       })}

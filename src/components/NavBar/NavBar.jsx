@@ -14,10 +14,7 @@ const NavBar = (props) => {
           <Link className="navbar-brand" to="/">
             {props.navBrandLeft}
           </Link>
-          {/* <a className="navbar-brand" href="perspektiva360.com">
-            {props.navBrandLeft}
-          </a> */}
-          {/* Seccion del boton de hamburguesa */}
+
           <button
             className="navbar-toggler"
             type="button"
@@ -43,12 +40,12 @@ const NavBar = (props) => {
                 />
               </NavLink>
               <NarvBarItem
-                texto="Boton1"
+                texto="Categoría1-Coming soon!"
                 aClase="nav-link"
                 aHref="https://perspektiva360.com/?lang=en"
               />
               <NarvBarItem
-                texto="Boton2"
+                texto="Categoría2-Coming soon!"
                 aClase="nav-link"
                 aHref="https://perspektiva360.com/?lang=en"
               />
