@@ -40,24 +40,34 @@ const NavBar = (props) => {
                   // aHref="https://perspektiva360.com/"
                 />
               </NavLink>
-
-              <NavLink to="/joyas">
+              <NavLink to="/category/jewelery">
                 <NarvBarItem
                   texto="Joyas"
                   aClase="nav-link"
                   // aHref="https://perspektiva360.com/?lang=en"
                 />
               </NavLink>
-              <NarvBarItem
-                texto="Categoría2-Coming soon!"
-                aClase="nav-link"
-                // aHref="https://perspektiva360.com/?lang=en"
-              />
-              {/* <NarvBarItem
-                texto="Deshabilitado"
-                aClase="nav-link disabled"
-                aHref="https://perspektiva360.com/?lang=en"
-              /> */}
+              <NavLink to="/category/electronics">
+                <NarvBarItem
+                  texto="Cosas para Geeks"
+                  aClase="nav-link"
+                  // aHref="https://perspektiva360.com/?lang=en"
+                />
+              </NavLink>
+              <NavLink to="/category/women's clothing">
+                <NarvBarItem
+                  texto="Mujeres"
+                  aClase="nav-link"
+                  // aHref="https://perspektiva360.com/?lang=en"
+                />
+              </NavLink>
+              <NavLink to="/category/men's clothing">
+                <NarvBarItem
+                  texto="Hombres"
+                  aClase="nav-link"
+                  // aHref="https://perspektiva360.com/?lang=en"
+                />
+              </NavLink>
             </ul>
             {/* este UL  se alinea derecha por clase ms-auto*/}
             <ul className="navbar-nav ms-auto">

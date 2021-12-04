@@ -7,7 +7,7 @@ const ItemDetail = () => {
   const [product, setProduct] = useState();
 
   useEffect(() => {
-    console.log(`https://fakestoreapi.com/products/${params.id}`);
+    // console.log(`https://fakestoreapi.com/products/${params.id}`);
     fetch(`https://fakestoreapi.com/products/${params.id}`)
       .then((response) => response.json())
       .then((json) => setProduct(json));
