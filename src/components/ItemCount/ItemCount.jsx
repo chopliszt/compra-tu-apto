@@ -10,6 +10,13 @@ export default function ItemCount({ inventario, inicial }) {
   const [cantidadCompras, setCantidadCompras] = React.useState(inicial);
   const [hayAlertaDeInventario, setHayAlertaDeInventario] =
     React.useState(false);
+  //nuevo hook segun lo que el usuario quiera ingresar
+  // const [cantidadAAgregar, setCantidadAAgregar] = React.useState(0);
+
+  // function handleInput(event) {
+  //   const valorAAgregarORestar = event.target.value;
+  //   setCantidadAAgregar(valorAAgregarORestar);
+  // }
 
   return (
     <div className="container">
@@ -103,7 +110,7 @@ export default function ItemCount({ inventario, inicial }) {
             +
           </button>
         </div>
-        <p>El Stock disponible es: {inventario}</p>
+        <p>({inventario} Disponibles)</p>
         <p>Total comprado: {cantidadCompras}</p>
       </div>
     </div>
