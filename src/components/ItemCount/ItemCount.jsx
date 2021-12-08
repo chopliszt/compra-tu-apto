@@ -5,9 +5,12 @@ import * as React from "react";
 // import CardMedia from "@mui/material/CardMedia";
 // import Typography from "@mui/material/Typography";
 import Alerta from "../Alerta/Alerta";
+//los contextos
+import { CartContext } from "../../contexts/CartContext";
 
 export default function ItemCount({ inventario, inicial }) {
-  const [cantidadCompras, setCantidadCompras] = React.useState(inicial);
+  //const [cantidadCompras, setCantidadCompras] = React.useState(inicial);
+  const [cantidadCompras, setCantidadCompras] = React.useContext(CartContext);
   const [hayAlertaDeInventario, setHayAlertaDeInventario] =
     React.useState(false);
   const [irACarrito, setIrACarrito] = React.useState(false);

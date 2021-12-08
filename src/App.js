@@ -9,22 +9,28 @@ import Error from "./views/Error";
 import Home from "./views/Home";
 import Category from "./views/Category";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+//los contextos
+import { CartProvider } from "./contexts/CartContext";
 
 function App() {
   return (
-    <Router>
-      <div className="App container">
-        <NavBar colorDeNavBar="#e3f2fd" navBrandLeft="CompraTuAppto" />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route exact path="/detail/:id" element={<ItemDetail />} />
-          <Route path="/category/:category" element={<Category />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </div>
-    </Router>
+    // <CartContext.Provider values={{ cantidadCompras, setCantidadCompras }}>
+    <CartProvider>
+      <Router>
+        <div className="App container">
+          <NavBar colorDeNavBar="#e3f2fd" navBrandLeft="CompraTuAppto" />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route exact path="/detail/:id" element={<ItemDetail />} />
+            <Route path="/category/:category" element={<Category />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </div>
+      </Router>
+    </CartProvider>
+    // </CartContext.Provider>
   );
 }
 

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import NarvBarItem from "./NavBarItem/NarvBarItem";
 import CartWidget from "../CartWidget/CartWidget";
 import { NavLink, Link } from "react-router-dom";
+//el contexto
+import { CartContext } from "../../contexts/CartContext";
 
 const NavBar = (props) => {
+  const [cantidadCompras] = useContext(CartContext);
   return (
     <div className="container-fluid">
       <nav
@@ -71,7 +74,7 @@ const NavBar = (props) => {
             </ul>
             {/* este UL  se alinea derecha por clase ms-auto*/}
             <ul className="navbar-nav ms-auto">
-              <CartWidget />
+              <CartWidget compras={cantidadCompras} />
             </ul>
           </div>
         </div>
