@@ -10,6 +10,7 @@ export default function ItemCount({ inventario, inicial }) {
   const [cantidadCompras, setCantidadCompras] = React.useState(inicial);
   const [hayAlertaDeInventario, setHayAlertaDeInventario] =
     React.useState(false);
+  const [irACarrito, setIrACarrito] = React.useState(false);
   //nuevo hook segun lo que el usuario quiera ingresar
   // const [cantidadAAgregar, setCantidadAAgregar] = React.useState(0);
 
@@ -111,7 +112,16 @@ export default function ItemCount({ inventario, inicial }) {
           </button>
         </div>
         <p>({inventario} Disponibles)</p>
-        <p>Total comprado: {cantidadCompras}</p>
+        <p>Has comprado: {cantidadCompras} items!</p>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            setIrACarrito(true);
+          }}
+        >
+          {irACarrito ? "ir a carrito!" : "confirmar items"}
+          {/* 0Confirmar {cantidadCompras} items */}
+        </button>
       </div>
     </div>
   );

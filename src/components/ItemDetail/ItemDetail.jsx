@@ -42,11 +42,7 @@ const ItemDetail = () => {
           </p>
           <h4>Cantidad a comprar</h4>
           <ItemCount inventario={5} inicial={0} />
-          <Link to="/cart">
-            <button class="btn btn-success me-2">
-              <strong>Compra ahora!</strong>
-            </button>
-          </Link>
+
           <Link to="/">
             <button class="btn btn-info">Regresar</button>
           </Link>
