@@ -18,7 +18,7 @@ function App() {
     <CartProvider>
       <Router>
         <div className="App container">
-          <NavBar colorDeNavBar="#e3f2fd" navBrandLeft="CompraTuAppto" />
+          <NavBar colorDeNavBar="#e3f2fd" navBrandLeft="MyLittleShop 🎁" />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

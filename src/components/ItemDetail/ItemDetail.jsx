@@ -1,10 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
+//importando el contexto
+import { CartContext } from "../../contexts/CartContext";
 
 const ItemDetail = () => {
   let params = useParams();
   const [product, setProduct] = useState();
+  //el contexto
+  const [
+    cantidadCompras,
+    setCantidadCompras,
+    itemsComprados,
+    setItemsComprados,
+    alertar,
+    estaDuplicada,
+    borrarCarrito,
+    eliminarItem,
+    agregarProducto,
+  ] = useContext(CartContext);
+  // const ItemsComprados = useContext(CartContext);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
@@ -36,13 +51,42 @@ const ItemDetail = () => {
           </p>
           <p>
             <strong>
-              Precio: {product ? product.price : "precio"}{" "}
+              Precio: US${product ? product.price : "precio"}
               <span class="badge bg-warning">Entrega Inmediata</span>
             </strong>
           </p>
           <h4>Cantidad a comprar</h4>
+          <h4>Cantidad comprada temporal {cantidadCompras}</h4>
           <ItemCount inventario={5} inicial={0} />
-
+          {/* <Link to="/cart"> */}
+          <button
+            className="btn btn-warning me-2"
+            onClick={() => {
+              //faltaria implementar que lo que compre sea mayor a 0
+              estaDuplicada(product.title) == false
+                ? agregarProducto(product, cantidadCompras)
+                : alert("Está repetido!");
+            }}
+          >
+            Compraaar
+          </button>
+          <button
+            className="btn btn-success me-1"
+            onClick={() => {
+              borrarCarrito();
+            }}
+          >
+            Borrar todo
+          </button>
+          <button
+            className="btn btn-success me-1"
+            onClick={() => {
+              eliminarItem(product.id);
+            }}
+          >
+            Borrar este producto
+          </button>
+          {/* </Link> */}
           <Link to="/">
             <button class="btn btn-info">Regresar</button>
           </Link>
