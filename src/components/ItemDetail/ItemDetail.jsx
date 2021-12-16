@@ -19,7 +19,6 @@ const ItemDetail = () => {
     eliminarItem,
     agregarProducto,
   ] = useContext(CartContext);
-  // const ItemsComprados = useContext(CartContext);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
@@ -58,18 +57,19 @@ const ItemDetail = () => {
           <h4>Cantidad a comprar</h4>
           <h4>Cantidad comprada temporal {cantidadCompras}</h4>
           <ItemCount inventario={5} inicial={0} />
-          {/* <Link to="/cart"> */}
-          <button
-            className="btn btn-warning me-2"
-            onClick={() => {
-              //faltaria implementar que lo que compre sea mayor a 0
-              estaDuplicada(product.title) == false
-                ? agregarProducto(product, cantidadCompras)
-                : alert("Está repetido!");
-            }}
-          >
-            Compraaar
-          </button>
+          <Link to="/cart">
+            <button
+              className="btn btn-warning me-2"
+              onClick={() => {
+                //faltaria implementar que lo que compre sea mayor a 0
+                estaDuplicada(product.title) == false
+                  ? agregarProducto(product, cantidadCompras)
+                  : alert("Está repetido!");
+              }}
+            >
+              Compraaar Ir al Carrito!
+            </button>
+          </Link>
           <button
             className="btn btn-success me-1"
             onClick={() => {

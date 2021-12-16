@@ -37,11 +37,19 @@ export const CartProvider = ({ children }) => {
   //borra el carrito totalmente
   function borrarCarrito() {
     setItemsComprados([]);
+    console.log("Carrito borrado");
+    console.log(itemsComprados);
   }
 
   //esta funcion elimina un item especifico del carrito del ItemDetail
   function eliminarItem(productID) {
     setItemsComprados(itemsComprados.filter((item) => item.id != productID));
+    console.log(`El item ${productID} ha sido borrado`);
+  }
+
+  //esta funcion va a retornar todos los articulos del carrito, para usar en el Cart
+  function obtenerAptosComprados() {
+    return itemsComprados;
   }
 
   return (
@@ -57,6 +65,7 @@ export const CartProvider = ({ children }) => {
         borrarCarrito,
         eliminarItem,
         agregarProducto,
+        obtenerAptosComprados,
       ]}
     >
       {children}
