@@ -18,7 +18,7 @@ const Home = () => {
           ? "Buenas tardes querido comprador o compradora!"
           : "Buenas noches querido comprador o compradora!"}
       </h1>
-      <h4>Esperamos compres muchas cosas bonitas de nuestra tienda</h4>
+      <h4>Esperamos encuentres la propiedad de tus sueños</h4>
       <p>
         {hora}:{minutos}:{segundos}
       </p>

@@ -3,6 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 //importando el contexto
 import { CartContext } from "../../contexts/CartContext";
+//Firebase, de firebaseConfig
+import { db } from "../../firebase/firebaseConfig";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const ItemDetail = () => {
   let params = useParams();
@@ -20,18 +23,55 @@ const ItemDetail = () => {
     agregarProducto,
   ] = useContext(CartContext);
 
+  // useEffect(() => {
+  //   fetch(`https://fakestoreapi.com/products/${params.id}`)
+  //     .then((response) => response.json())
+  //     .then((json) => setProduct(json));
+  // }, []);
+
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${params.id}`)
-      .then((response) => response.json())
-      .then((json) => setProduct(json));
-  }, []);
+    console.log("trayendo los datos en ItemDetail");
+    const getAptos = async () => {
+      const q = query(
+        collection(db, "apartamentos"),
+        where("id", "==", `${params.id}`)
+      );
+      const misDocumentos = []; //creo esta variable para luego sumarle a los datos, el ID
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        misDocumentos.push({ ...doc.data(), id: doc.id }); //para que tengan el id
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.id, " => ", doc.data());
+      });
+      setProduct(misDocumentos);
+      console.log(product);
+    };
+    //la tengo que llamar para que se ejecute
+    getAptos();
+  }, []); //aqui hay que colocarle una variable normalmente, no olvide
+
+  // useEffect(() => {
+  //   //const db = getFirestore();
+  //   const itemCollection = db.collection("apartamentos");
+  //   const firebaseItem = itemCollection.doc("SnWPII0BN73yMIPw0Qck");
+
+  //   firebaseItem
+  //     .get()
+  //     .then((doc) => {
+  //       if (doc.exists) setProduct({ id: doc.id, ...doc.data() });
+  //     })
+  //     .finally(() => {
+  //       // setLoading(false);
+  //       console.log("Esto viene despu[es del finally");
+  //     });
+  // }, []); //[id]
 
   return (
     <>
       <div class="row mt-3">
         <col-12>
           <h2>
-            {product ? product.title : "Título de artículo"}{" "}
+            {product ? product.proyecto : "Título de artículo"}
             <span class="badge bg-primary">
               {product ? product.category : null}
             </span>

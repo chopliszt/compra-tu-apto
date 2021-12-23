@@ -2,18 +2,21 @@ import React from "react";
 import Item from "../Item/Item";
 
 const ItemList = ({ ItemsAEnviar }) => {
+  console.log(ItemsAEnviar, "items que llegan hoy miercoles2");
   return (
     <>
       {ItemsAEnviar.map((item, index) => {
-        return index < 15 ? (
-          <Item
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            price={item.price}
-            pictureUrl={item.image}
-          />
-        ) : null;
+        return (
+          <>
+            <Item
+              key={item.id}
+              id={item.id}
+              title={item.proyecto}
+              price={item.valor}
+              pictureUrl={item.img}
+            />
+          </>
+        );
       })}
     </>
   );

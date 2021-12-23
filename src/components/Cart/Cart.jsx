@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Button, Card, Icon, Image } from "semantic-ui-react";
-import { CartContext } from "../../contexts/CartContext";
+// import { Button, Card, Icon, Image } from "semantic-ui-react";
+import { useCartContext } from "../../contexts/CartContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
@@ -18,68 +18,116 @@ const Cart = () => {
     eliminarItem,
     agregarProducto,
     obtenerAptosComprados,
-  ] = useContext(CartContext);
+  ] = useCartContext();
 
   //para traer los apartamentos comprados después del primer render
   useEffect(() => {
     setTimeout(() => {
-      setAptosComprados(obtenerAptosComprados);
-    }, 5000);
+      //setAptosComprados(obtenerAptosComprados);
+    }, 0);
   }, [aptosComprados]);
-
+  //setAptosComprados(obtenerAptosComprados);
+  console.log(obtenerAptosComprados);
   console.log(aptosComprados);
+
   return (
     <div>
       <div className="row mt-3 ms-1">
-        {aptosComprados.map((apartamento) => {
-          return (
-            <>
-              <Card.Group>
-                <Card>
-                  <Image
-                    src="/images/avatar/large/matthew.png"
-                    wrapped
-                    ui={false}
-                  />
-                  <Card.Content>
-                    <Card.Header>T[itulo {apartamento.name}</Card.Header>
-                    <p>id: {apartamento.id}</p>
-                    <p>precio: {apartamento.price}</p>
-                    <p>Cantidad Comprada: {apartamento.quantity}</p>
-                    <Card.Description>
-                      Descripcion del apartamento
-                    </Card.Description>
-                    <p>este es otro parrafo</p>
-                    <button className="btn btn-primary me-2">
-                      Botón auxiliar
-                    </button>
-                    <button
-                      className="btn btn-primary me-2"
-                      onClick={() => {
-                        eliminarItem(apartamento.id);
-                        console.log("hola parrot id ", apartamento.id);
-                      }}
-                    >
-                      Borrar este articulo
-                    </button>
-                  </Card.Content>
-                </Card>
-              </Card.Group>
-            </>
-          );
-        })}
-        <button
-          className="btn btn-primary mt-3 me-2"
-          onClick={() => {
-            borrarCarrito();
-            alertar();
-          }}
-        >
-          Borrar todo
-        </button>
-        <Link to="/">
-          <button className="btn btn-primary">regresar</button>
-        </Link>
+        <div className="row">
+          <div className="col">
+            <div className="table-responsive">
+              <table className="table mt-3">
+                <caption>
+                  Tabla de excelentes compras que has hecho, eres brillante
+                </caption>
+                <thead className="table-light">
+                  <th>Producto</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Acciones</th>
+                </thead>
+                <tbody>
+                  {/* El index lo usare para saber que tabla coloreo */}
+                  {aptosComprados.map((apartamento, index) => {
+                    return (
+                      <>
+                        <tr
+                          className={
+                            index % 2 === 0 ? "table-primary" : "table"
+                          }
+                        >
+                          <td>Mochila de viaje</td>
+                          <td>50</td>
+                          <td>1</td>
+                          <td>
+                            🦜
+                            <button
+                              class="btn btn-primary"
+                              onClick={() => {
+                                eliminarItem(apartamento.id);
+                                console.log(
+                                  "Eliminando el articulo: ",
+                                  apartamento.id
+                                );
+                              }}
+                            >
+                              borrar
+                            </button>
+                          </td>
+                        </tr>
+                        <tr
+                          className={
+                            index % 2 === 0 ? "table-primary" : "table"
+                          }
+                        >
+                          <td>Apple Pencil</td>
+                          <td>36</td>
+                          <td>1</td>
+                          <td>
+                            🦃
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => {
+                                eliminarItem(apartamento.id);
+                                console.log(
+                                  "Eliminando el articulo: ",
+                                  apartamento.id
+                                );
+                              }}
+                            >
+                              borrar
+                            </button>
+                          </td>
+                        </tr>
+                      </>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>
+              <strong>TOTAL:</strong>
+            </p>
+            <button className="btn btn-primary me-1">comprar</button>
+            <button
+              className="btn btn-info me-1"
+              onClick={() => {
+                borrarCarrito();
+                //alertar();
+              }}
+            >
+              Borrar carritoo
+            </button>
+            <Link to="/">
+              <button className="btn btn-primary me-1">regresar</button>
+            </Link>
+          </div>
+        </div>
+
         {/* <Card.Group>
           <Card>
             <Image src="/images/avatar/large/matthew.png" wrapped ui={false} />

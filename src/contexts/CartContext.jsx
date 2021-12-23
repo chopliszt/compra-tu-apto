@@ -1,6 +1,8 @@
 //son las dos cosas que necesito para crear el contexto
-import { createContext, useState } from "react";
-export const CartContext = createContext({});
+import { createContext, useState, useContext } from "react";
+export const CartContext = createContext();
+
+export const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cantidadCompras, setCantidadCompras] = useState(0);
@@ -43,7 +45,7 @@ export const CartProvider = ({ children }) => {
 
   //esta funcion elimina un item especifico del carrito del ItemDetail
   function eliminarItem(productID) {
-    setItemsComprados(itemsComprados.filter((item) => item.id != productID));
+    setItemsComprados(itemsComprados.filter((item) => item.id !== productID));
     console.log(`El item ${productID} ha sido borrado`);
   }
 
@@ -55,6 +57,7 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={[
+        //tiene que ser {} en vez de []?
         //le estoy diciendo todos los estados que va a poder tener el contexto
         cantidadCompras,
         setCantidadCompras,
